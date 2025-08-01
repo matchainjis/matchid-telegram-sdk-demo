@@ -1,0 +1,338 @@
+/* 🎨 Global Styles */
+:root {
+  --primary-color: #007aff;
+  --bg-dark: #181818;
+  --bg-light: #f8f8f8;
+  --text-dark: #181818;
+  --text-light: rgba(255, 255, 255, 0.87);
+  --card-dark: rgba(255, 255, 255, 0.1);
+  --card-light: rgba(0, 0, 0, 0.05);
+  --navbar-dark: rgba(255, 255, 255, 0.1);
+  --navbar-light: rgba(0, 0, 0, 0.05);
+}
+
+/* 🌙 Dark Mode */
+@media (prefers-color-scheme: dark) {
+  body { background: var(--bg-dark) !important; color: var(--text-light) !important; }
+
+  .card { background: var(--card-dark) !important; color: var(--text-light) !important; }
+  .navbar { background: var(--navbar-dark) !important; }
+
+  /* Ensure navbar icons stay visible */
+  .nav-links a {
+    color: var(--text-light);
+  }
+
+  /* Active link highlight */
+  .nav-links a.active {
+    color: var(--primary-color) !important;
+  }
+}
+
+/* ☀️ Light Mode */
+@media (prefers-color-scheme: light) {
+  body { background: var(--bg-light) !important; color: var(--text-dark) !important; }
+  
+  /* ✅ Adjust background for cards in light mode */
+  .card { 
+    background: var(--card-light) !important; 
+    color: var(--text-dark) !important;
+  }
+  
+  /* ✅ Adjust navbar background */
+  .navbar { 
+    background: var(--navbar-light) !important;
+  }
+
+  /* ✅ Ensure navbar icons are visible */
+  .nav-links a {
+    color: var(--text-dark) !important;
+  }
+
+  /* ✅ Keep active link color */
+  .nav-links a.active {
+    color: var(--primary-color) !important;
+  }
+
+  /* ✅ Improve hover effect */
+  .nav-links a:hover {
+    color: var(--primary-color) !important;
+    transform: scale(1.1) !important;
+  }
+}
+
+/* 🛠️ Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* 📏 Layout */
+body {
+  font-family: Inter, system-ui, sans-serif;
+  display: flex;
+  flex-direction: column; /* ✅ Ensures that the body takes up full height */
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  overflow: hidden; /* ✅ Prevents extra background from appearing */
+}
+
+/* 📦 Main Container */
+.container {
+  width: 100vw !important;
+  max-width: 100% !important;
+  background: var(--card-dark) !important;
+  padding: 5%;
+  border-radius: 16px;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+
+  /* ✅ Ensures uniform height & width across pages */
+  min-height: 80vh;
+  min-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  /* ✅ Fix Extra Background Issue */
+  flex-grow: 1; /* Forces full content height to prevent gaps */
+  overflow: hidden; /* Prevents the extra background from appearing */
+}
+
+.container ul {
+  text-align: left;
+  padding-left: 20px;  /* ✅ Ensures bullets don’t go too far left */
+  margin-top: 10px;
+}
+
+.container ul li {
+  padding: 5px 0;
+}
+
+/* 📌 Headings */
+h1, h2 {
+  font-size: clamp(20px, 3vw, 26px);
+  margin-bottom: 12px;
+}
+
+/* 🔲 Grid for Home Page */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  width: 100%;  /* ✅ Grid stretches full width */
+  max-width: 600px; /* ✅ Prevents too much stretching */
+  margin-top: 20px;
+}
+
+/* 🏷️ Cards */
+.card {
+  width: 100%;  /* ✅ Make sure cards stretch */
+  max-width: 250px; /* ✅ Prevent them from becoming too wide */
+  /* background: rgba(255, 255, 255, 0.1); */
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  /* color: var(--text-light); */
+  transition: background 0.3s, transform 0.1s;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.03);
+}
+
+/* 🚀 Buttons */
+button {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  font-size: clamp(14px, 1.5vw, 18px);
+  font-weight: 600;
+  color: #fff;
+  background: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.1s ease;
+}
+
+button:hover {
+  background: #005ecb;
+  transform: scale(1.02);
+}
+
+button:disabled {
+  background: gray;
+  cursor: not-allowed;
+}
+
+/* 📦 Ensure Wallet Addresses Stay Inside Box */
+.wallet-box {
+  word-wrap: break-word;  /* ✅ Prevent long addresses from overflowing */
+  overflow-wrap: break-word;
+  max-width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+/* ✅ Make sure wallet address text is aligned well */
+.wallet-address {
+  display: inline-block;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
+
+/* 🏦 Improve Account Status Box */
+.account-status {
+  font-size: clamp(12px, 1.2vw, 16px);
+  padding: 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  text-align: left; /* ✅ Ensure left-aligned text */
+  width: 100%;
+  max-width: 500px;
+  margin: 10px auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* 🔙 Back Button */
+.back-button {
+  background: #ff3b30;
+  color: white;
+  font-size: 14px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+.back-button:hover {
+  background: #cc2e24;
+}
+
+/* 🏠 Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px 5%;
+  border-radius: 12px;
+  margin-bottom: 20px;
+
+  /* ✅ Fix for Telegram Mini App */
+  flex-shrink: 0; /* Prevents navbar from expanding beyond its size */
+}
+
+.navbar h1 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* 🔗 Navigation Links */
+.nav-links {
+  display: flex;
+  justify-content: space-around;  /* ✅ Evenly distributes icons */
+  width: 100%;  /* ✅ Stretches navbar full width */
+  padding: 10px 0;
+}
+
+/* 🔘 Navbar Icons */
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-light);
+  transition: color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;  /* ✅ Each icon takes equal space */
+}
+
+.nav-links a:hover {
+  color: var(--primary-color);
+  transform: scale(1.1);
+}
+
+/* ✨ Highlight Active Page */
+.nav-links a.active {
+  color: var(--primary-color);
+  transform: scale(1.2);
+}
+
+/* Add to index.css or Dashboard.module.css */
+.logout-container {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 10px;
+}
+
+.logout-btn {
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: #e04345;
+}
+
+/* 📱 Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .container {
+    max-width: 100%;
+    padding: 6%;
+  }
+
+  .account-status {
+    max-width: 100%;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .nav-links {
+    margin-top: 10px;
+    gap: 12px;
+  }
+
+  button {
+    font-size: 16px;
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    max-width: 100%;
+    padding: 8%;
+  }
+
+  .account-status {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
