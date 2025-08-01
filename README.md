@@ -16,7 +16,8 @@ This app demonstrates:
 
 ## 🚀 Quick Start
 
-set up your .env file properly
+Set up your .env file properly
+Focus on [LoginScreen.tsx](https://github.com/matchainjis/matchid-telegram-sdk-demo/blob/main/src/pages/LoginScreen.tsx)
 
 ```bash
 git clone git@github.com:matchainjis/matchid-telegram-sdk-demo.git
