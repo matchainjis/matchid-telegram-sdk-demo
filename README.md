@@ -16,6 +16,8 @@ This app demonstrates:
 
 ## 🚀 Quick Start
 
+set up your .env file properly
+
 ```bash
 git clone git@github.com:matchainjis/matchid-telegram-sdk-demo.git
 cd matchid-telegram-sdk-demo
